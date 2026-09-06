@@ -1,0 +1,26 @@
+name: Release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify tag matches package
+        run: node -e 'const p=require("./package.json"); if(process.env.GITHUB_REF_NAME !== `v${p.version}`) process.exit(1)'
+      - run: npm test
+      - run: npm run test:package
+      - run: npm pack
+      - run: sha256sum ./*.tgz > SHA256SUMS
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" ./*.tgz SHA256SUMS --verify-tag --title "DSH WPA $GITHUB_REF_NAME" --notes-file RELEASE_NOTES.md

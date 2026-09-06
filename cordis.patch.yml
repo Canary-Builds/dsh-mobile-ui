@@ -1,0 +1,10 @@
+[
+  {
+    "insert": [
+      {
+        "id": "dsh-wpa",
+        "name": "@canary-builds/dsh-wpa"
+      }
+    ]
+  }
+]

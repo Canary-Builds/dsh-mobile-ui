@@ -1,26 +1,31 @@
 name: Publish to npm
-
 on:
   push:
-    tags:
-      - "v*"
+    branches: [main]
+    tags: ['v*']
   workflow_dispatch:
-
+concurrency:
+  group: npm-publish
+  cancel-in-progress: false
 permissions:
   contents: read
   id-token: write
-
 jobs:
   publish:
+    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     environment: npm
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           registry-url: https://registry.npmjs.org
-      - name: Use latest npm (trusted publishing needs npm >= 11.5)
-        run: npm install -g npm@latest
-      - name: Publish (OIDC trusted publishing — no token)
-        run: npm publish --provenance --access public
+      - run: npm install --global npm@11
+      - name: Check whether this version needs publishing
+        id: version
+        run: node scripts/publish-status.mjs
+      - run: npm test
+      - run: npm run test:package
+      - run: npm publish --access public --provenance
+        if: steps.version.outputs.publish == 'true'

@@ -1,0 +1,31 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import vm from 'node:vm';
+import { apply, inject } from '../lib/index.js';
+const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+test('Profile Bundle mounts the scoped host and browser module registers the same package ID', () => {
+  const patch = JSON.parse(readFileSync(new URL('../cordis.patch.yml', import.meta.url), 'utf8'));
+  assert.equal(patch[0].insert[0].name, pkg.name);
+  let registration;
+  vm.runInNewContext(readFileSync(new URL('../lib/client.js', import.meta.url), 'utf8'), { window: { __ModuleLoader__: { load: value => { registration = value; } } } });
+  assert.equal(registration.id, pkg.name);
+  const client = registration.factory(name => { assert.equal(name, 'react'); return {}; });
+  assert.equal(typeof client.apply, 'function');
+  assert.deepEqual(Array.from(client.inject), ['slots', 'layout']);
+});
+test('Host serves the standalone manifest and returns its cleanup to the effect owner', () => {
+  assert.deepEqual(inject, ['webServer']);
+  let route, cleanup;
+  const dispose = () => {};
+  apply({ effect: callback => { cleanup = callback(); }, webServer: { register: value => { route = value; return dispose; } } });
+  assert.equal(cleanup, dispose);
+  assert.equal(route.kind, 'exact');
+  assert.equal(route.path, '/manifest.webmanifest');
+  let headers, body;
+  route.handler({}, { writeHead: (code, value) => { assert.equal(code, 200); headers = value; }, end: value => { body = JSON.parse(value); } });
+  assert.match(headers['Content-Type'], /application\/manifest\+json/);
+  assert.equal(body.display, 'standalone');
+  assert.deepEqual(body.display_override, ['standalone']);
+  assert.equal(body.start_url, '/');
+});

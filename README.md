@@ -1,4 +1,4 @@
-# dsh-plugin-splash
+# DSH WPA
 
 A mobile/PWA-first UI redesign for the [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (DSH) web GUI, delivered as one Cordis plugin with a host half and a browser half. minimal, app-like: the sidebar gets out of your way, the reading area wins, and the app installs as a proper standalone window.
 
@@ -29,32 +29,24 @@ Everything visual is scoped to app windows and touch devices (`display-mode: sta
 
 ## Install
 
-**One command** (installs into the default `web` profile; pass another profile name as the first argument if yours differs):
+Requires Node.js 22.19+ and DeepSeek Harness. Install into your web profile:
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/Canary-Builds/dsh-splash/main/install.sh | bash
+```sh
+dsh plugin --profile web add @canary-builds/dsh-wpa
 ```
 
-Then restart DSH. The installer is idempotent — safe to re-run. Updates: re-run the installer (it installs the latest published version), then restart.
+Restart DSH and refresh the browser. To update, run the same command again and restart. The package includes its Profile Bundle patch and prebuilt browser module; no separate installer, build, or manual composition row is needed for a fresh install.
 
-<details><summary>Manual install</summary>
+### Migrating from Splash
 
-In your DSH profile (e.g. `~/.dsh/profiles/web/`):
+This is the successor to `dsh-plugin-splash` in the renamed `Canary-Builds/dsh-wpa` repository. Remove the old `splash` row that names `dsh-plugin-splash` from your profile's `cordis.patch.yml`, then run:
 
-1. Install the package: `dsh plugin --profile web add dsh-plugin-splash`
-   (the profile is a pnpm workspace — use the `dsh plugin` wrapper, not raw npm)
+```sh
+dsh plugin --profile web remove dsh-plugin-splash
+dsh plugin --profile web add @canary-builds/dsh-wpa
+```
 
-2. Add the composition row to the profile's `cordis.patch.yml`:
-
-   ```yaml
-   - insert:
-       - id: splash
-         name: dsh-plugin-splash
-       ```
-
-3. Restart the profile. No other wiring — the host half registers its route, the browser half is discovered through the standard `dsh.client` scan.
-
-</details>
+Restart DSH. Keep other profile overrides intact. Do not load both packages together; both own the same UI behavior and manifest route. GitHub redirects the previous repository URL, but npm package names do not redirect automatically.
 
 ## Compatibility
 
@@ -69,3 +61,7 @@ The redesign is implemented as scoped CSS keyed off the shipped UI's DOM: stable
 ## License
 
 MIT
+
+## Development and releases
+
+Run `npm test` and `npm run test:package`. See [RELEASING.md](RELEASING.md) for automated npm publication and GitHub releases. [Report an issue](https://github.com/Canary-Builds/dsh-wpa/issues) · [Canary Builds](https://canarybuilds.com).

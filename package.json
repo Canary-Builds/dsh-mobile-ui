@@ -1,6 +1,6 @@
 {
-  "name": "dsh-plugin-splash",
-  "version": "1.0.2",
+  "name": "@canary-builds/dsh-wpa",
+  "version": "1.1.0",
   "description": "Mobile/PWA-first redesign for the DeepSeek Harness web GUI: app-style collapsible sidebar with a floating whale launcher, fullscreen overlay sidebar, compact top bar (icon-only session-log export, abbreviated mode chips), fullscreen settings sheet with icon-only nav, full-width user bubbles, and a standalone-window PWA manifest.",
   "license": "MIT",
   "type": "module",
@@ -12,14 +12,18 @@
   },
   "files": [
     "lib",
-    "README.md"
+    "cordis.patch.yml",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
   ],
   "keywords": [
     "dsh",
     "deepseek-harness",
     "cordis",
     "pwa",
-    "ui"
+    "ui",
+    "dsh-plugin"
   ],
   "dsh": {
     "client": {
@@ -28,14 +32,29 @@
         "@deepseek-ai/dsh-client-runtime",
         "@deepseek-ai/dsh-client-ui-layout"
       ]
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
     }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Canary-Builds/dsh-splash.git"
+    "url": "git+https://github.com/Canary-Builds/dsh-wpa.git"
   },
   "bugs": {
-    "url": "https://github.com/Canary-Builds/dsh-splash/issues"
+    "url": "https://github.com/Canary-Builds/dsh-wpa/issues"
   },
-  "homepage": "https://github.com/Canary-Builds/dsh-splash#readme"
+  "homepage": "https://github.com/Canary-Builds/dsh-wpa#readme",
+  "author": "Canary Builds",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "test:package": "node scripts/check-package.mjs"
+  }
 }
