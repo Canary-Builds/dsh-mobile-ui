@@ -16,6 +16,6 @@ The scoped package has its own trust record; the old Splash record does not tran
 - Environment: `npm`
 - Allow direct `npm publish`.
 
-The GitHub environment and workflow are prepared. Save this npm-side connection before the next version bump. The initial scoped package publication uses the operator's vault credential; no npm token is stored in Actions.
+The scoped package connection is configured. New stable versions pushed to main publish through OIDC; no npm token is stored in Actions. The initial 1.1.1 publication used the operator's vault credential.
 
 Historical `dsh-plugin-splash` releases remain available. The old package should direct users to the scoped successor. See README.md for migration.

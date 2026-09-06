@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.2 — 2026-09-06
+
+- Release through GitHub Actions using the scoped package's npm Trusted Publisher connection.
+- Preserve the Mobile UI behavior from 1.1.1.
+
 ## 1.1.1 — 2026-09-06
 
 - Finalize the project name as DSH Mobile UI and package as `@canary-builds/dsh-mobile-ui`.

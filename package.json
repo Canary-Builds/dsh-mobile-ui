@@ -1,6 +1,6 @@
 {
   "name": "@canary-builds/dsh-mobile-ui",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Mobile and PWA interface enhancements for DeepSeek Harness, inside your existing web UI.",
   "license": "MIT",
   "type": "module",
