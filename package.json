@@ -1,7 +1,7 @@
 {
-  "name": "@canary-builds/dsh-wpa",
-  "version": "1.1.0",
-  "description": "Mobile/PWA-first redesign for the DeepSeek Harness web GUI: app-style collapsible sidebar with a floating whale launcher, fullscreen overlay sidebar, compact top bar (icon-only session-log export, abbreviated mode chips), fullscreen settings sheet with icon-only nav, full-width user bubbles, and a standalone-window PWA manifest.",
+  "name": "@canary-builds/dsh-mobile-ui",
+  "version": "1.1.1",
+  "description": "Mobile and PWA interface enhancements for DeepSeek Harness, inside your existing web UI.",
   "license": "MIT",
   "type": "module",
   "main": "./lib/index.js",
@@ -39,12 +39,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Canary-Builds/dsh-wpa.git"
+    "url": "git+https://github.com/Canary-Builds/dsh-mobile-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/Canary-Builds/dsh-wpa/issues"
+    "url": "https://github.com/Canary-Builds/dsh-mobile-ui/issues"
   },
-  "homepage": "https://github.com/Canary-Builds/dsh-wpa#readme",
+  "homepage": "https://github.com/Canary-Builds/dsh-mobile-ui#readme",
   "author": "Canary Builds",
   "engines": {
     "node": ">=22.19.0"

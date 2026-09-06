@@ -2,8 +2,8 @@
   {
     "insert": [
       {
-        "id": "dsh-wpa",
-        "name": "@canary-builds/dsh-wpa"
+        "id": "dsh-mobile-ui",
+        "name": "@canary-builds/dsh-mobile-ui"
       }
     ]
   }

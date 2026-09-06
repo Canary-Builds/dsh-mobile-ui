@@ -1,4 +1,4 @@
-# DSH WPA
+# DSH Mobile UI
 
 A mobile/PWA-first UI redesign for the [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (DSH) web GUI, delivered as one Cordis plugin with a host half and a browser half. minimal, app-like: the sidebar gets out of your way, the reading area wins, and the app installs as a proper standalone window.
 
@@ -32,19 +32,21 @@ Everything visual is scoped to app windows and touch devices (`display-mode: sta
 Requires Node.js 22.19+ and DeepSeek Harness. Install into your web profile:
 
 ```sh
-dsh plugin --profile web add @canary-builds/dsh-wpa
+dsh plugin --profile web add @canary-builds/dsh-mobile-ui
 ```
 
 Restart DSH and refresh the browser. To update, run the same command again and restart. The package includes its Profile Bundle patch and prebuilt browser module; no separate installer, build, or manual composition row is needed for a fresh install.
 
 ### Migrating from Splash
 
-This is the successor to `dsh-plugin-splash` in the renamed `Canary-Builds/dsh-wpa` repository. Remove the old `splash` row that names `dsh-plugin-splash` from your profile's `cordis.patch.yml`, then run:
+This is the successor to `dsh-plugin-splash` in the renamed `Canary-Builds/dsh-mobile-ui` repository. Remove the old `splash` row that names `dsh-plugin-splash` from your profile's `cordis.patch.yml`, then run:
 
 ```sh
 dsh plugin --profile web remove dsh-plugin-splash
-dsh plugin --profile web add @canary-builds/dsh-wpa
+dsh plugin --profile web add @canary-builds/dsh-mobile-ui
 ```
+
+If you installed the interim `@canary-builds/dsh-wpa` package, remove it with `dsh plugin --profile web remove @canary-builds/dsh-wpa` before installing Mobile UI.
 
 Restart DSH. Keep other profile overrides intact. Do not load both packages together; both own the same UI behavior and manifest route. GitHub redirects the previous repository URL, but npm package names do not redirect automatically.
 
@@ -64,4 +66,4 @@ MIT
 
 ## Development and releases
 
-Run `npm test` and `npm run test:package`. See [RELEASING.md](RELEASING.md) for automated npm publication and GitHub releases. [Report an issue](https://github.com/Canary-Builds/dsh-wpa/issues) · [Canary Builds](https://canarybuilds.com).
+Run `npm test` and `npm run test:package`. See [RELEASING.md](RELEASING.md) for automated npm publication and GitHub releases. [Report an issue](https://github.com/Canary-Builds/dsh-mobile-ui/issues) · [Canary Builds](https://canarybuilds.com).

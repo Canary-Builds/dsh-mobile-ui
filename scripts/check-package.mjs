@@ -6,7 +6,7 @@ import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import vm from 'node:vm';
 const root = resolve(import.meta.dirname, '..');
-const scratch = mkdtempSync(join(tmpdir(), 'dsh-wpa-package-'));
+const scratch = mkdtempSync(join(tmpdir(), 'dsh-mobile-ui-package-'));
 try {
   const packed = JSON.parse(execFileSync('npm', ['pack', '--json', '--pack-destination', scratch], { cwd: root, encoding: 'utf8' }))[0];
   for (const { path } of packed.files) assert.match(path, /^(lib\/(index|client)\.js|package\.json|cordis\.patch\.yml|README\.md|CHANGELOG\.md|LICENSE)$/);
