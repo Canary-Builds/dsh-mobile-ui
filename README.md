@@ -4,6 +4,25 @@ A mobile/PWA-first UI redesign for the [DeepSeek Harness](https://github.com/dee
 
 Everything visual is scoped to app windows and touch devices (`display-mode: standalone/fullscreen/minimal-ui`, or `hover:none` + `pointer:coarse`). **Desktop browser tabs are untouched** and render the stock UI.
 
+## Screenshots
+
+Select a screenshot to view it at full size.
+
+<table>
+  <tr>
+    <td align="center" valign="top"><a href="https://raw.githubusercontent.com/Canary-Builds/dsh-mobile-ui/main/assets/screenshots/chat-light.png"><img src="https://raw.githubusercontent.com/Canary-Builds/dsh-mobile-ui/main/assets/screenshots/chat-light.png" width="260" alt="Chat · light theme"></a><br>Chat · light theme</td>
+    <td align="center" valign="top"><a href="https://raw.githubusercontent.com/Canary-Builds/dsh-mobile-ui/main/assets/screenshots/sidebar-dark.png"><img src="https://raw.githubusercontent.com/Canary-Builds/dsh-mobile-ui/main/assets/screenshots/sidebar-dark.png" width="260" alt="Fullscreen sidebar · dark theme"></a><br>Fullscreen sidebar · dark theme</td>
+    <td align="center" valign="top"><a href="https://raw.githubusercontent.com/Canary-Builds/dsh-mobile-ui/main/assets/screenshots/settings-light.png"><img src="https://raw.githubusercontent.com/Canary-Builds/dsh-mobile-ui/main/assets/screenshots/settings-light.png" width="260" alt="General settings · light theme"></a><br>General settings · light theme</td>
+  </tr>
+  <tr>
+    <td align="center" valign="top"><a href="https://raw.githubusercontent.com/Canary-Builds/dsh-mobile-ui/main/assets/screenshots/agent-presets-dark.png"><img src="https://raw.githubusercontent.com/Canary-Builds/dsh-mobile-ui/main/assets/screenshots/agent-presets-dark.png" width="260" alt="Agent presets · dark theme"></a><br>Agent presets · dark theme</td>
+    <td align="center" valign="top"><a href="https://raw.githubusercontent.com/Canary-Builds/dsh-mobile-ui/main/assets/screenshots/connect-settings-light.png"><img src="https://raw.githubusercontent.com/Canary-Builds/dsh-mobile-ui/main/assets/screenshots/connect-settings-light.png" width="260" alt="DSH Connect settings · light theme"></a><br>DSH Connect settings · light theme</td>
+    <td align="center" valign="top"><a href="https://raw.githubusercontent.com/Canary-Builds/dsh-mobile-ui/main/assets/screenshots/trajectory-light.png"><img src="https://raw.githubusercontent.com/Canary-Builds/dsh-mobile-ui/main/assets/screenshots/trajectory-light.png" width="260" alt="Trajectory · light theme"></a><br>Trajectory · light theme</td>
+  </tr>
+</table>
+
+The connector settings example shows [DSH Connect](https://github.com/Canary-Builds/dhs-connect), installed separately. Mobile UI changes the layout of the existing Harness interface.
+
 ## Features
 
 **Sidebar (app-style)**
